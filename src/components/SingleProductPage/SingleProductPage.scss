@@ -1,0 +1,34 @@
+
+.product--demonstration {
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 400px;
+    transition: 300ms all;
+    gap: 5px;
+
+    > .product--demonstration-frist {
+        background-color: red;
+
+    }
+
+    > .product--demonstration-second {
+        background-color: blue;
+    }
+
+    > .product--demonstration-third {
+        background-color: green;
+    }
+}
+
+.product--demonstration:has(.product--demonstration-frist:hover) {
+    grid-template-columns: 5fr 1fr 1fr;
+}
+
+.product--demonstration:has(.product--demonstration-second:hover) {
+    grid-template-columns:  1fr 5fr 1fr;
+}
+
+.product--demonstration:has(.product--demonstration-third:hover) {
+    grid-template-columns:  1fr 1fr 5fr;
+}

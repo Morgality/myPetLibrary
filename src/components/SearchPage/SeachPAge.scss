@@ -1,0 +1,24 @@
+.search--list {
+    padding: 0;
+    margin: 0;
+
+    > li {
+        list-style-type: none;
+        padding: 15px;
+        border: 1px solid lightgray;
+        margin: 5px;
+        border-radius: 4px;
+    }
+}
+
+.search--result {
+    display: flex;
+
+    > .description {
+        flex: 2 2 auto;
+    }
+
+    > .photos {
+        flex: 6 6 auto;
+    }
+}

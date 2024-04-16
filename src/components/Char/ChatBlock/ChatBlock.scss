@@ -1,0 +1,49 @@
+.chat--block {
+    display: flex;
+    flex-direction: column;
+
+    > .new--message--from {
+        display: flex;
+        justify-content: space-around;
+
+        > .new--message--button {
+            flex: 1 1 auto;
+            border-radius: 4px;
+            border: 1px solid lightgray;
+
+            &:hover {
+                background-color: lightgray;
+            }
+        }
+    }
+}
+
+.chat--story--message--title {
+    display: flex;
+    justify-content:space-between;
+    flex-direction: row;
+}
+
+.chat--story--list {
+
+    background-color: rgb(231, 231, 231);
+
+    > ul {
+        padding: 0;
+        margin: 0;
+
+        .chat--story--message {
+            list-style-type: none;
+            margin: 5px 2px;
+            padding: 5px 3px;
+            border: 1px solid lightgray;
+            border-radius: 4px;
+            background-color: white;
+        }
+    }
+}
+
+#active--filter {
+    background-color: rgb(22, 119, 255);
+    color: white;
+}

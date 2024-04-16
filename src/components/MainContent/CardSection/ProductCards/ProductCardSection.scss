@@ -1,0 +1,102 @@
+.product--card--section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+
+    > .product--card--section--cards {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        column-gap: 25px;
+        row-gap: 15px;
+    }
+
+}
+
+.ant-card-cover {
+    > img { 
+        max-height: 400px;
+    }
+}
+
+
+.card--block { 
+    position: relative;
+    min-width: 250px;
+
+    > .card--block--button {
+        width: 50px;
+        height: 50px;
+        border-radius:50%;
+        z-index: 99;
+        position: absolute;
+        border: none;
+        right: 0%;
+
+        &:hover {
+            background-color: lightblue;
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .product--card--section {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+    
+        > .product--card--section--cards {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            column-gap: 25px;
+            row-gap: 15px;
+        }
+    
+    }
+}
+
+@media (max-width: 1000px), (orientation: portrait) {
+    .product--card--section {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+    
+        > .product--card--section--cards {
+            display: grid;
+            grid-template-columns: auto auto;
+            column-gap: 25px;
+            row-gap: 15px;
+        }
+    
+    }
+}
+
+@media (max-width: 400px), (orientation: portrait) {
+    .product--card--section {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+    
+        > .product--card--section--cards {
+            display: grid;
+            grid-template-columns: auto;
+            column-gap: 25px;
+            row-gap: 15px;
+        }
+    
+    }
+}
+
+@media (max-width: 500px) {
+    .card--block { 
+        position: relative;
+        min-width: 300px;
+    
+        > .card--block--button {
+            width: 70px;
+            height: 70px;
+        }}
+}
