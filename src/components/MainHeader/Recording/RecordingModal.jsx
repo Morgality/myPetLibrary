@@ -84,7 +84,7 @@ const RecordingModal = ({isModalOpen, setIsModalOpen, searchReq ,setsearchReq}) 
               }}
               onClick={startRecording} src={micro? micro : '#'} width="130px" alt="" /> */}
 
-              <div id='animation--pulse'></div>
+              { recording ? <div id='animation--pulse'></div> : null }
             </div>
             
         </div>
