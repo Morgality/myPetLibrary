@@ -1,0 +1,31 @@
+.micro--icon {
+    position: relative;
+}
+
+#micro--icon--svg:hover {
+    fill: 'red';
+}
+
+#animation--pulse {
+    position: absolute;
+    top: 0;
+    right: -2%;
+    width: 130px;
+    height: 130px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 3px solid rgb(22, 119, 255);
+    animation: pulse 2s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}

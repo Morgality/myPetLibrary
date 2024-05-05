@@ -1,0 +1,34 @@
+.stroy--header {
+    display: flex;
+    justify-content: space-between;
+
+    > h3 {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+    
+    > span {
+        font-weight: bold;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        color: #005bff;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+#search--story--point {
+    list-style-type: none;
+    padding: 5px 0;;
+    border-bottom: 2px solid lightgray;
+
+    &:hover {
+        color: #005bff;
+        background-color: rgba(0,150,255,.078);
+        cursor: pointer;
+    }
+}

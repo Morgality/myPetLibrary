@@ -1,0 +1,50 @@
+.main--header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 15px;
+    z-index: 999;
+    background-color: white;
+
+    > .main--header {
+        flex: 1 1 auto
+    }
+    
+    > .search--form {
+        flex: 1 1 auto;
+    }
+
+}
+
+.scticky-header {
+    position: fixed;
+    width: 100%;
+}
+
+@media (max-width: 680px) {
+    .scticky-header {
+        position: relative;
+    }
+
+    .main--header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 15px;
+        z-index: 999;
+        background-color: white;
+    
+        > .main--header {
+            flex: 1 1 auto
+        }
+        
+        > .search--form {
+            flex: 1 1 auto;
+        }
+    
+    }
+    
+    .main-header-logo {
+        width: 20px;
+    }
+}

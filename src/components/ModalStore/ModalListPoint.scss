@@ -1,0 +1,17 @@
+.modal--list--point {
+    padding: 4px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > .list--point--control {
+
+        > #list--point--control {
+            border: none;
+            font-weight: bold;
+        }
+        
+    }
+}

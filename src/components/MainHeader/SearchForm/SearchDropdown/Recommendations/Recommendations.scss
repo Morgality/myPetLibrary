@@ -1,0 +1,36 @@
+.search--recommendations--list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-items: center;
+    cursor: pointer;
+}
+
+#search--recommendations--list--pending {
+    grid-template-columns: 1fr;
+    align-items: center;
+}
+
+.seacrh--recommendations--single {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid white;
+    width: 230px;
+
+    > img {
+        width: 100%;
+        height: 230px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    > p {
+        background-color: white;
+        color: black;
+    }
+
+    &:hover {
+        border: 1px solid lightgray;
+        box-shadow:  6px 6px 23px 0px rgba(163,163,163,1);
+    }
+}
