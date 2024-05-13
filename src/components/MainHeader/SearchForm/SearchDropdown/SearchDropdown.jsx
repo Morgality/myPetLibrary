@@ -19,7 +19,7 @@ export const SearchDropdown = (props) => {
 
                 <div className="serach--story">
                     <div className="serach--story--history">
-                        <h3>История</h3>
+                        <h3> { searchReq.trim().length < 1 ? 'История' : 'Результаты поиска' } </h3>
                         <span id="serach--story---span">Очистить</span>
                     </div>
 
