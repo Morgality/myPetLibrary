@@ -4,6 +4,9 @@ import './ChatBasement.scss'
 import { ChatBlock } from './ChatBlock/ChatBlock';
 
 export const ChatBasement = () => {
+
+  const isPhone = navigator.userAgent.trim().toLowerCase().includes('iphone' || 'android');
+
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -16,8 +19,8 @@ export const ChatBasement = () => {
       <Button id='chat--button' type="primary" shape="circle" size='large' onClick={showDrawer}>
         &#128172;
       </Button>
-      <Drawer title="Отзывы" onClose={onClose} open={open}>
-      <ChatBlock/>
+      <Drawer width={isPhone ? '100%' : '35%'} title="Чат" onClose={onClose} open={open}>
+        <ChatBlock/>
       </Drawer>
     </>
   );

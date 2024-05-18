@@ -1,49 +1,59 @@
-.chat--block {
+.chat-basement  {
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
-    > .new--message--from {
+    > .messages-block {
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        flex: 12 1 auto;
+        overflow: hidden;
 
-        > .new--message--button {
-            flex: 1 1 auto;
-            border-radius: 4px;
-            border: 1px solid lightgray;
-
-            &:hover {
-                background-color: lightgray;
-            }
+        > .chat--scroll {
+            overflow: auto;
+            scroll-behavior: smooth;
         }
+    }
+
+    > .chat-input-block {
+        background-color: #1677ff;
+        border-radius: 8px;
+        display: flex;
+
     }
 }
 
-.chat--story--message--title {
-    display: flex;
-    justify-content:space-between;
-    flex-direction: row;
-}
+#chat--message {
+    display: block;
+    border: 1px solid gray;
+    border-radius: 6px 6px 0 6px;
+    margin: 8px;
+    padding: 8px;
 
-.chat--story--list {
-
-    background-color: rgb(231, 231, 231);
-
-    > ul {
+    > p {
+        word-wrap: break-word;
         padding: 0;
         margin: 0;
-
-        .chat--story--message {
-            list-style-type: none;
-            margin: 5px 2px;
-            padding: 5px 3px;
-            border: 1px solid lightgray;
-            border-radius: 4px;
-            background-color: white;
-        }
+        padding-top: 5px;
     }
+
+    > #chat--message--username {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
 }
 
-#active--filter {
-    background-color: rgb(22, 119, 255);
-    color: white;
+#other--chat--message {
+    display: block;
+    border: 1px solid gray;
+    border-radius: 10px 10px 0 10px ;
+    margin: 8px;
+    padding: 8px;
+}
+
+#message--list {
+    padding: 0;
+    margin: 0;
 }

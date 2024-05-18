@@ -1,49 +1,117 @@
-import React, { useState, useEffect } from "react";
-import { getCom } from "../../../api/getComments";
-import { ChatBlockCommentList } from "./ChatBlockCommentList";
+import React, { useState, useEffect, useRef } from "react";
 import "./ChatBlock.scss"
+import { Button, Input } from "antd";
 import { PendingSpinner } from "../../wrappers/Pending/PendingSpinner";
+import Sumbit from "../../../../public/img/Chat/Sumbit.svg"
+const { TextArea } = Input;
 
 export const ChatBlock = ()  => {
 
-    const [comments, setComemnts] = useState([]);
-    const [filtered, setFiltered] = useState(null)
-    const [fetching, setFetching] = useState(true);
-    const [page, setPage] = useState(1)
+    const wsRef = useRef();
 
-    const states = {
-        fetching,
-        comments,
-        filtered,
-        setFiltered,
-    }
+    const scrollRef = useRef();
+
+    const [isOnline, setOnline]=  useState(false);
+
+    const [messages, setMessages] = useState([]);
+
+    const [messageText, setMessageText] = useState('');
+
+    useEffect(() => {
+
+        wsRef.current = new WebSocket(`ws://localhost:8080`);
+
+        wsRef.current.onopen = () => {
+
+            setOnline(true)
+
+            wsRef.current.send(JSON.stringify({
+                type: '2',
+                user: 1 ? 'anonim' : 'user',
+                messageText : '',
+                date : new Date(),
+                id : crypto.randomUUID()
+            }))
+
+        }
+
+        wsRef.current.onmessage = async (event) => {
+
+            const inputMessage = await JSON.parse(event.data)
+
+            setMessages(prev => [...prev, inputMessage])
+
+            console.log(JSON.parse(event.data))
+        }
+
+
+
+    }, [])
 
     useEffect(() => {
         
-        getCom(comments, page, setComemnts, setFetching, setPage)
+        scrollRef.current.scrollBy(0, scrollRef.current.scrollHeight)
 
-    }, [fetching])
+    }, [messages])
 
-    const getScrolledContent = (e) => {
-        if (!(e.target.scrollTop + e.target.offsetHeight < e.target.scrollHeight - 150) && comments.length < 500) {
-            setFetching(true)
-        }
+    function sumbitMessage() {
+        wsRef.current.send(JSON.stringify({
+            type: '1',
+            user: 1 ? 'anonim' : 'user',
+            messageText : messageText,
+            date : new Date(),
+            id : crypto.randomUUID()
+        }))
     }
 
-    useEffect(() => {
-        const el = document.querySelector('.ant-drawer-body') || document.querySelector('.product--comments')
+    const audioRef = useRef()
 
-        el.addEventListener('scroll', getScrolledContent )
-
-        return function() {
-            el.removeEventListener('scroll', getScrolledContent )
-        }
-    } ,[])
+    const [videoStream, setStream] = useState(null);
 
     return (
-        <div className="chat--block">
-            
-            <ChatBlockCommentList states={states}/>
+        <div className="chat-basement">
+
+            <div className="messages-block">
+                <div ref={scrollRef} className="chat--scroll">
+
+                    <ul id="message--list">
+                        <li id="chat--message" ref={audioRef}>
+                            <span id="chat--message--username">username</span> <span> 20240514 </span>
+
+                            <p> MessageMessageMessageMessageMessageMessageMessageMessageMessage </p>
+
+                            
+                        </li>
+
+                        { messages.map(item => {
+                            return (
+                                <li id="chat--message">
+                                    <span id="chat--message--username">{item.user}</span> <span>{item.date}</span>
+
+                                    <p> { item.messageText } </p>
+                                </li>
+                            )
+                        }) }
+                        
+                    </ul>
+                
+                </div>
+                
+            </div>
+
+            <div className="chat-input-block">
+                <TextArea prefix={'1'} 
+                    placeholder="Введите текст сообщения" 
+                    value={messageText} 
+                    onChange={e => setMessageText(e.target.value)} 
+                    style={{resize:'none'}}
+                />
+
+                <Button onClick={sumbitMessage} type="primary" style={{display:'flex', height: '100%'}}>
+                    <img style={{pointerEvents:'none'}} height="100%" src={Sumbit} alt=""/>
+                </Button>
+            </div>
         </div>
     )
+
 }
