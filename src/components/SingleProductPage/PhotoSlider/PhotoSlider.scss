@@ -1,0 +1,90 @@
+#current--photo {
+    max-height: 400px;
+    > img {
+        max-height: inherit ;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+    
+}
+
+.product--slider {
+    display: flex;
+    position: relative;
+}
+
+.modal--photo--block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aside--photos {
+    width: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 4px;
+    // overflow: hidden;
+
+    > ul {
+
+        display: flex;
+
+        > #single--product--photo { 
+            width: 48px;
+            height: 48px;
+            border-radius: 4px;
+            margin: 5px 4px;
+
+            &:hover {
+                border: 2px solid  rgb(143, 188, 243);
+            }
+
+            > img {
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+#single--product--photo { 
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    border: 2px solid white;
+    margin: 5px 4px;
+
+    > img {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+}
+
+#selected--slider--photo {
+    border: 2px solid  rgb(64, 150, 255);
+}
+
+#modal--photo {
+    width: 50%;
+    height: 50%;
+}
+
+@media (max-width: 680px) {
+    .product--slider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        > .aside--photos {
+            order: 2;
+            > ul {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+    }
+}

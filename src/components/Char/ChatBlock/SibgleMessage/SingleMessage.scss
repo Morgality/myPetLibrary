@@ -1,0 +1,44 @@
+.self--message {
+    background: rgb(223, 223, 243);
+}
+
+#chat--message {
+    display: block;
+    border: 1px solid gray;
+    border-radius: 6px 6px 0 6px;
+    margin: 8px;
+    padding: 8px;
+
+    > p {
+        word-wrap: break-word;
+        padding: 0;
+        margin: 0;
+        padding-top: 5px;
+    }
+
+    > #chat--message--username {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+}
+
+#other--chat--message {
+    display: block;
+    border: 1px solid gray;
+    border-radius: 6px 6px 6xp 0px ;
+    margin: 8px;
+    padding: 8px;
+
+    > p {
+        word-wrap: break-word;
+        padding: 0;
+        margin: 0;
+        padding-top: 5px;
+    }
+
+    > #chat--message--username {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
