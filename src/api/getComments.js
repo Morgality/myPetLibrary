@@ -1,27 +1,11 @@
 import axios from 'axios';
 
-export const getCom = async (comments, page, setComemnts, setFetching, setPage) => {
+const getComments = async (page) => {
 
-    try {
-        let com = (await axios.get(`https://jsonplaceholder.typicode.com/comments?_limit=10&_page=${page}`)).data
-        let us = (await axios.get('https://jsonplaceholder.typicode.com/users')).data
+    const data = await axios.get(`https://jsonplaceholder.typicode.com/comments`);
 
-        const fullComments = com.map(item => {
-            return {
-                ...item,
-                user : us.find(user => user.id === item.id),
-                stars : Math.round(Math.random() * (5 - 1) + 1)
-            }
-        })
+    return data
 
-        setComemnts([...comments, ...fullComments])
-        setPage(prev => prev + 1)
-
-    } catch (error) {
-        console.log(error)
-    } finally {
-        setFetching(false)
-    }
-
-    return
 }
+
+export { getComments }

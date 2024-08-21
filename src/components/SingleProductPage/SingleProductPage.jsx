@@ -9,6 +9,7 @@ import { getRandomPhoto } from "../../api/getRandomPhoto";
 import { PhotoSlider } from "./PhotoSlider/PhotoSlider";
 import {AboutProduct} from "./AboutProduct/AboutProduct";
 import { AddToBasketBlock } from "./AddToBasketBlock/AddToBasketBlock";
+import ProductCommentList from "./ComnnetLIst/CommentList";
 
 export const ProductContext = createContext('none');
 
@@ -29,11 +30,12 @@ const SingleProductPage = ({
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/comments?id=${params}`).then(res => {
             let currentId = res.data[0]
+            
             setProductData(currentId)
+
             if (useSelector(state => state.basket.basket).find(item => item.id === currentId)) {
                 setaddedInBasket(true)
-            }
-            
+            }            
         })
 
         setPhotos([getRandomPhoto(), getRandomPhoto(), getRandomPhoto()])
@@ -61,7 +63,7 @@ const SingleProductPage = ({
                     </ProductContext.Provider>
 
             <div className="product--comments" style={{padding: '1em'}}>
-                <ChatBlock />
+                <ProductCommentList />    
             </div>
         </div>
     )
